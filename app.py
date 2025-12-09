@@ -12,7 +12,7 @@ import json
 # We check if we are in the Cloud (st.secrets) or local
 try:
     if "GEMINI_API_KEY" in st.secrets:
-        genai.configure(api_key=st.secrets["AIzaSyBMX5-0b7NujVk5BBbPbibyqmh3AJT0hpU"])
+        genai.configure(api_key=st.secrets["AIza --------------------------------------------------------"])
     else:
         # Fallback for local testing if you haven't set up secrets.toml
         # You can paste your key here for local use, but DON'T upload it to GitHub!
