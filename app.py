@@ -21,9 +21,16 @@ except:
     # Failsafe
     pass
 
-# --- CUSTOM CSS FOR BUTTONS 🎨 ---
+# --- CUSTOM CSS 🎨 ---
+# This injects styles for buttons and to reduce top spacing
 st.markdown("""
 <style>
+    /* Reduce padding at the top of the page */
+    .block-container {
+        padding-top: 2rem;
+    }
+
+    /* Style for the 'New Round' button (Sage Green) */
     div.stButton > button:first-child {
         background-color: #8FBC8F; /* Sage Green */
         color: black;
@@ -73,7 +80,9 @@ def save_to_google_sheets(name, topic, score, feedback_text):
         print(f"Sheet Error: {e}")
         return False
 
-st.set_page_config(page_title="Missionary Trainer", page_icon="📛")
+# --- MAIN APP SETUP ---
+# Removed page_icon argument
+st.set_page_config(page_title="Missionary Trainer")
 
 # --- SESSION STATE SETUP 🎒 ---
 if "history" not in st.session_state:
@@ -83,7 +92,8 @@ if "audio_key" not in st.session_state:
     st.session_state.audio_key = 0
 
 # --- MAIN UI ---
-st.title("📛 Missionary Trainer")
+# Removed emoji from title
+st.title("Missionary Trainer")
 st.caption("Practice teaching clearly and effectively.")
 
 user_name = st.text_input("Enter your Name (optional):", "Elder/Sister Anonymous")
@@ -106,7 +116,8 @@ topic = st.selectbox(
     ]
 )
 
-st.info("💡 Tip: Briefly outline your thoughts (Optional).")
+# Removed the "Tip" st.info box here
+
 structure = st.text_area(
     "Your Structure (Optional)", 
     height=150, 
