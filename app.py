@@ -151,7 +151,7 @@ if audio_file is not None:
                 st.error(f"❌ Upload Failed: {e}")
                 st.stop()
 
-        # --- UPDATED PROMPT (Strict Content-Only Evaluation) ---
+        # --- UPDATED PROMPT (Strict Content-Only Evaluation + 20 Words) ---
         system_prompt = f"""
         You are an encouraging but sharp Missionary Trainer. Your goal is to help missionaries improve their MESSAGE, not their performance.
 
@@ -159,6 +159,7 @@ if audio_file is not None:
         - Principle: "{topic}"
         
         NEGATIVE CONSTRAINTS (CRITICAL):
+        - DO NOT output your internal 'thought' process or analysis steps.
         - DO NOT evaluate the user's voice, speed, volume, tone, or delivery style.
         - DO NOT comment on "whispering," "slow pace," or "halting speech."
         - Evaluate ONLY the words, logic, and structure of the argument.
@@ -189,7 +190,7 @@ if audio_file is not None:
 
         ⚠️ The Fix: (Max 20 words) Biggest content/logic area to improve.
 
-        ⚔️ Next Challenge: [Actionable Tactic] to hit an **[TARGET SCORE] / 10.0** next.
+        ⚔️ Next Challenge: (Max 20 words) [Actionable Tactic] to hit an **[TARGET SCORE] / 10.0** next.
         """
 
         model = genai.GenerativeModel("gemini-flash-latest")
